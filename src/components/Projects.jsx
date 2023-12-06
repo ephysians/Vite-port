@@ -1,0 +1,75 @@
+import { content } from "../Content";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper";
+
+
+const Projects = () => {
+  const { Projects } = content;
+  return (
+    <section className="bg-bg_light_primary" id="projects">
+      <div className="md:container px-5 pt-14 min-h-screen flex flex-col justify-between">
+        <div>
+          <h2 className="title" data-aos="fade-down">
+            {Projects.title}
+          </h2>
+          <h4 className="subtitle" data-aos="fade-down">
+            {Projects.subtitle}
+          </h4>
+          <br />
+        </div>
+        <div className="flex items-center lg:flex-row flex-col-reverse gap-5 pl-20 pb-20 pt-16 " >
+          <img
+            src={Projects.image}
+            alt="..."
+            data-aos="fade-right"
+            className="max-w-[45vw] relative left-[15] bottom-20 min-w-[22rem]  "
+          />
+          <Swiper
+            pagination={{
+              clickable: true,
+            }}
+            data-aos="fade-left"
+            spaceBetween={20}
+            modules={[Pagination]}
+            className="rounded-3xl pb-16 max-w-xs drop-shadow-primary self-start relative top-10 sm: bg-400-green "
+          >
+            {Projects.project_content.map((content, i) => (
+              <SwiperSlide
+                key={i}
+                className="bg-white rounded-3xl p-5 border-b-8 border-[#D5E3F1] h-fit"
+              >
+                <img src={content.image} alt="..." />
+                <div className="flex flex-col gap-1 mt-2">
+                  <h5 className="font-bold font-Poppins">{content.title}</h5>
+                  <button className="font-bold text-gray self-end">
+                    READ MORE
+                  </button>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default Projects;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
